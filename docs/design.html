@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bubble Trouble Design</title>
+<style>
+  @page { size: A4; margin: 13mm 14mm; }
+  body { font: 10.6pt/1.42 Helvetica, Arial, sans-serif; color: #111; margin: 0; background: #fff; }
+  h1 { font-size: 16pt; margin: 0 0 2px; }
+  .sub { color: #555; margin: 0 0 8px; font-size: 9.5pt; }
+  h2 { font-size: 13pt; margin: 8px 0 4px; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+  h3 { font-size: 10.8pt; margin: 8px 0 2px; }
+  p  { margin: 0 0 4px; text-align: justify; }
+  code { font-family: Menlo, Consolas, monospace; font-size: 9.2pt; }
+  svg { width: 100%; height: auto; display: block; }
+  .erd { break-inside: avoid; }
+</style>
+</head>
+<body>
+<h1>Bubble Trouble &ndash; Entity&ndash;Relationship Diagram</h1>
+<p class="sub">CITS1402 Project, Semester 2 2026 &middot; Mission 1 &middot; matches createTables.sql</p>
+<div class="erd"><svg viewBox="0 0 900 660" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Entity-relationship diagram for Bubble Trouble">
+<style>
+  .ename { font: 700 14px Helvetica, Arial, sans-serif; fill: #fff; }
+  .attr  { font: 12.5px Helvetica, Arial, sans-serif; fill: #111; }
+  .type  { font: 10.5px Helvetica, Arial, sans-serif; fill: #888; }
+  .key   { font: 700 10.5px Helvetica, Arial, sans-serif; fill: #b03a2e; }
+  .rel   { font: italic 12px Helvetica, Arial, sans-serif; fill: #333; }
+  .card  { font: 700 10.5px Helvetica, Arial, sans-serif; fill: #555; }
+  .lhead { font: 700 12px Helvetica, Arial, sans-serif; fill: #111; }
+  .ltext { font: 11.5px Helvetica, Arial, sans-serif; fill: #111; }
+  .lnote { font: 10px Helvetica, Arial, sans-serif; fill: #333; white-space: pre; }
+</style>
+<line x1="232" y1="95" x2="344" y2="95" stroke="#222" stroke-width="1.4"/>
+<line x1="241.0" y1="103.0" x2="241.0" y2="87.0" stroke="#222" stroke-width="1.6"/>
+<line x1="248.0" y1="103.0" x2="248.0" y2="87.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="95.0" x2="344.0" y2="104.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="95.0" x2="344.0" y2="95.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="95.0" x2="344.0" y2="86.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="320.0" cy="95.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="288" y="86" class="rel" text-anchor="middle">places</text>
+<text x="250" y="113" class="card" text-anchor="middle">1..1</text>
+<text x="323" y="113" class="card" text-anchor="middle">0..N</text><line x1="668" y1="95" x2="556" y2="95" stroke="#222" stroke-width="1.4"/>
+<line x1="659.0" y1="87.0" x2="659.0" y2="103.0" stroke="#222" stroke-width="1.6"/>
+<line x1="652.0" y1="87.0" x2="652.0" y2="103.0" stroke="#222" stroke-width="1.6"/>
+<line x1="572.0" y1="95.0" x2="556.0" y2="86.0" stroke="#222" stroke-width="1.6"/>
+<line x1="572.0" y1="95.0" x2="556.0" y2="95.0" stroke="#222" stroke-width="1.6"/>
+<line x1="572.0" y1="95.0" x2="556.0" y2="104.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="580.0" cy="95.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="612" y="86" class="rel" text-anchor="middle">processes</text>
+<text x="650" y="113" class="card" text-anchor="middle">1..1</text>
+<text x="577" y="113" class="card" text-anchor="middle">0..N</text><line x1="450.0" y1="158" x2="450.0" y2="236" stroke="#222" stroke-width="1.4"/>
+<line x1="442.0" y1="167.0" x2="458.0" y2="167.0" stroke="#222" stroke-width="1.6"/>
+<line x1="442.0" y1="174.0" x2="458.0" y2="174.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="220.0" x2="441.0" y2="236.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="220.0" x2="450.0" y2="236.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="220.0" x2="459.0" y2="236.0" stroke="#222" stroke-width="1.6"/>
+<line x1="458.0" y1="214.0" x2="442.0" y2="214.0" stroke="#222" stroke-width="1.6"/>
+<text x="462" y="206" class="rel" text-anchor="start">contains</text>
+<text x="430" y="184" class="card" text-anchor="middle">1..1</text>
+<text x="430" y="226" class="card" text-anchor="middle">1..N</text><line x1="232" y1="326" x2="344" y2="326" stroke="#222" stroke-width="1.4"/>
+<line x1="241.0" y1="334.0" x2="241.0" y2="318.0" stroke="#222" stroke-width="1.6"/>
+<line x1="248.0" y1="334.0" x2="248.0" y2="318.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="326.0" x2="344.0" y2="335.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="326.0" x2="344.0" y2="326.0" stroke="#222" stroke-width="1.6"/>
+<line x1="328.0" y1="326.0" x2="344.0" y2="317.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="320.0" cy="326.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="288" y="317" class="rel" text-anchor="middle">is chosen in</text>
+<text x="250" y="344" class="card" text-anchor="middle">1..1</text>
+<text x="323" y="344" class="card" text-anchor="middle">0..N</text><line x1="450.0" y1="506" x2="450.0" y2="418" stroke="#222" stroke-width="1.4"/>
+<line x1="458.0" y1="497.0" x2="442.0" y2="497.0" stroke="#222" stroke-width="1.6"/>
+<line x1="458.0" y1="490.0" x2="442.0" y2="490.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="434.0" x2="459.0" y2="418.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="434.0" x2="450.0" y2="418.0" stroke="#222" stroke-width="1.6"/>
+<line x1="450.0" y1="434.0" x2="441.0" y2="418.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="450.0" cy="442.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="462" y="466" class="rel" text-anchor="start">is ordered in</text>
+<text x="430" y="494" class="card" text-anchor="middle">1..1</text>
+<text x="430" y="438" class="card" text-anchor="middle">0..N</text><line x1="556" y1="575" x2="668" y2="575" stroke="#222" stroke-width="1.4"/>
+<line x1="565.0" y1="583.0" x2="565.0" y2="567.0" stroke="#222" stroke-width="1.6"/>
+<line x1="572.0" y1="583.0" x2="572.0" y2="567.0" stroke="#222" stroke-width="1.6"/>
+<line x1="652.0" y1="575.0" x2="668.0" y2="584.0" stroke="#222" stroke-width="1.6"/>
+<line x1="652.0" y1="575.0" x2="668.0" y2="575.0" stroke="#222" stroke-width="1.6"/>
+<line x1="652.0" y1="575.0" x2="668.0" y2="566.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="644.0" cy="575.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="612" y="566" class="rel" text-anchor="middle">requires</text>
+<text x="574" y="593" class="card" text-anchor="middle">1..1</text>
+<text x="647" y="593" class="card" text-anchor="middle">0..N</text><line x1="774.0" y1="372" x2="774.0" y2="528" stroke="#222" stroke-width="1.4"/>
+<line x1="766.0" y1="381.0" x2="782.0" y2="381.0" stroke="#222" stroke-width="1.6"/>
+<line x1="766.0" y1="388.0" x2="782.0" y2="388.0" stroke="#222" stroke-width="1.6"/>
+<line x1="774.0" y1="512.0" x2="765.0" y2="528.0" stroke="#222" stroke-width="1.6"/>
+<line x1="774.0" y1="512.0" x2="774.0" y2="528.0" stroke="#222" stroke-width="1.6"/>
+<line x1="774.0" y1="512.0" x2="783.0" y2="528.0" stroke="#222" stroke-width="1.6"/>
+<circle cx="774.0" cy="504.0" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/>
+<text x="786" y="452" class="rel" text-anchor="start">is used in</text>
+<text x="754" y="394" class="card" text-anchor="middle">1..1</text>
+<text x="754" y="516" class="card" text-anchor="middle">0..N</text>
+<g class="entity">
+<rect x="20" y="20" width="212" height="138" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="20" y="20" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="20" y="43" width="212" height="5" fill="#1f4e79"/>
+<text x="126.0" y="39" text-anchor="middle" class="ename">Member</text>
+<text x="28" y="63" class="attr" text-decoration="underline" font-weight="700">memberId</text>
+<text x="182" y="63" class="type" text-anchor="end">INTEGER</text>
+<text x="224" y="63" class="key" text-anchor="end">PK</text>
+<line x1="20" y1="70" x2="232" y2="70" stroke="#ddd"/>
+<text x="28" y="85" class="attr">memberName</text>
+<text x="182" y="85" class="type" text-anchor="end">TEXT</text>
+<line x1="20" y1="92" x2="232" y2="92" stroke="#ddd"/>
+<text x="28" y="107" class="attr">memberEmail</text>
+<text x="182" y="107" class="type" text-anchor="end">TEXT</text>
+<line x1="20" y1="114" x2="232" y2="114" stroke="#ddd"/>
+<text x="28" y="129" class="attr">cardNumber</text>
+<text x="182" y="129" class="type" text-anchor="end">TEXT</text>
+<line x1="20" y1="136" x2="232" y2="136" stroke="#ddd"/>
+<text x="28" y="151" class="attr">joinDate</text>
+<text x="182" y="151" class="type" text-anchor="end">TEXT</text>
+</g><g class="entity">
+<rect x="344" y="20" width="212" height="138" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="344" y="20" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="344" y="43" width="212" height="5" fill="#1f4e79"/>
+<text x="450.0" y="39" text-anchor="middle" class="ename">SalesOrder</text>
+<text x="352" y="63" class="attr" text-decoration="underline" font-weight="700">orderId</text>
+<text x="506" y="63" class="type" text-anchor="end">INTEGER</text>
+<text x="548" y="63" class="key" text-anchor="end">PK</text>
+<line x1="344" y1="70" x2="556" y2="70" stroke="#ddd"/>
+<text x="352" y="85" class="attr">memberId</text>
+<text x="506" y="85" class="type" text-anchor="end">INTEGER</text>
+<text x="548" y="85" class="key" text-anchor="end">FK</text>
+<line x1="344" y1="92" x2="556" y2="92" stroke="#ddd"/>
+<text x="352" y="107" class="attr">storeId</text>
+<text x="506" y="107" class="type" text-anchor="end">TEXT</text>
+<text x="548" y="107" class="key" text-anchor="end">FK</text>
+<line x1="344" y1="114" x2="556" y2="114" stroke="#ddd"/>
+<text x="352" y="129" class="attr">orderDate</text>
+<text x="506" y="129" class="type" text-anchor="end">TEXT</text>
+<line x1="344" y1="136" x2="556" y2="136" stroke="#ddd"/>
+<text x="352" y="151" class="attr">orderTime</text>
+<text x="506" y="151" class="type" text-anchor="end">TEXT</text>
+</g><g class="entity">
+<rect x="668" y="20" width="212" height="116" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="668" y="20" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="668" y="43" width="212" height="5" fill="#1f4e79"/>
+<text x="774.0" y="39" text-anchor="middle" class="ename">Store</text>
+<text x="676" y="63" class="attr" text-decoration="underline" font-weight="700">storeId</text>
+<text x="830" y="63" class="type" text-anchor="end">TEXT</text>
+<text x="872" y="63" class="key" text-anchor="end">PK</text>
+<line x1="668" y1="70" x2="880" y2="70" stroke="#ddd"/>
+<text x="676" y="85" class="attr">storeName</text>
+<text x="830" y="85" class="type" text-anchor="end">TEXT</text>
+<line x1="668" y1="92" x2="880" y2="92" stroke="#ddd"/>
+<text x="676" y="107" class="attr">suburb</text>
+<text x="830" y="107" class="type" text-anchor="end">TEXT</text>
+<line x1="668" y1="114" x2="880" y2="114" stroke="#ddd"/>
+<text x="676" y="129" class="attr">openingDate</text>
+<text x="830" y="129" class="type" text-anchor="end">TEXT</text>
+</g><g class="entity">
+<rect x="20" y="290" width="212" height="72" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="20" y="290" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="20" y="313" width="212" height="5" fill="#1f4e79"/>
+<text x="126.0" y="309" text-anchor="middle" class="ename">SizeOption</text>
+<text x="28" y="333" class="attr" text-decoration="underline" font-weight="700">size</text>
+<text x="182" y="333" class="type" text-anchor="end">TEXT</text>
+<text x="224" y="333" class="key" text-anchor="end">PK</text>
+<line x1="20" y1="340" x2="232" y2="340" stroke="#ddd"/>
+<text x="28" y="355" class="attr">sizeSurcharge</text>
+<text x="182" y="355" class="type" text-anchor="end">REAL</text>
+</g><g class="entity">
+<rect x="344" y="236" width="212" height="182" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="347" y="239" width="206" height="176" rx="3" fill="none" stroke="#333" stroke-width="0.8"/>
+<rect x="344" y="236" width="212" height="28" rx="4" fill="#7a4b00"/>
+<rect x="344" y="259" width="212" height="5" fill="#7a4b00"/>
+<text x="450.0" y="255" text-anchor="middle" class="ename">OrderItem</text>
+<text x="352" y="279" class="attr" text-decoration="underline" font-weight="700">orderId</text>
+<text x="506" y="279" class="type" text-anchor="end">INTEGER</text>
+<text x="548" y="279" class="key" text-anchor="end">PK,FK</text>
+<line x1="344" y1="286" x2="556" y2="286" stroke="#ddd"/>
+<text x="352" y="301" class="attr" text-decoration="underline" font-weight="700">lineNo</text>
+<text x="506" y="301" class="type" text-anchor="end">INTEGER</text>
+<text x="548" y="301" class="key" text-anchor="end">PK</text>
+<line x1="344" y1="308" x2="556" y2="308" stroke="#ddd"/>
+<text x="352" y="323" class="attr">productId</text>
+<text x="506" y="323" class="type" text-anchor="end">TEXT</text>
+<text x="548" y="323" class="key" text-anchor="end">FK</text>
+<line x1="344" y1="330" x2="556" y2="330" stroke="#ddd"/>
+<text x="352" y="345" class="attr">size</text>
+<text x="506" y="345" class="type" text-anchor="end">TEXT</text>
+<text x="548" y="345" class="key" text-anchor="end">FK</text>
+<line x1="344" y1="352" x2="556" y2="352" stroke="#ddd"/>
+<text x="352" y="367" class="attr">quantity</text>
+<text x="506" y="367" class="type" text-anchor="end">INTEGER</text>
+<line x1="344" y1="374" x2="556" y2="374" stroke="#ddd"/>
+<text x="352" y="389" class="attr">unitPrice</text>
+<text x="506" y="389" class="type" text-anchor="end">REAL</text>
+<line x1="344" y1="396" x2="556" y2="396" stroke="#ddd"/>
+<text x="352" y="411" class="attr">lineTotal</text>
+<text x="506" y="411" class="type" text-anchor="end">REAL</text>
+</g><g class="entity">
+<rect x="668" y="256" width="212" height="116" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="668" y="256" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="668" y="279" width="212" height="5" fill="#1f4e79"/>
+<text x="774.0" y="275" text-anchor="middle" class="ename">Ingredient</text>
+<text x="676" y="299" class="attr" text-decoration="underline" font-weight="700">ingredientId</text>
+<text x="830" y="299" class="type" text-anchor="end">TEXT</text>
+<text x="872" y="299" class="key" text-anchor="end">PK</text>
+<line x1="668" y1="306" x2="880" y2="306" stroke="#ddd"/>
+<text x="676" y="321" class="attr">ingredientName</text>
+<text x="830" y="321" class="type" text-anchor="end">TEXT</text>
+<line x1="668" y1="328" x2="880" y2="328" stroke="#ddd"/>
+<text x="676" y="343" class="attr">unit</text>
+<text x="830" y="343" class="type" text-anchor="end">TEXT</text>
+<line x1="668" y1="350" x2="880" y2="350" stroke="#ddd"/>
+<text x="676" y="365" class="attr">unitCost</text>
+<text x="830" y="365" class="type" text-anchor="end">REAL</text>
+</g><g class="entity">
+<rect x="344" y="506" width="212" height="138" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="344" y="506" width="212" height="28" rx="4" fill="#1f4e79"/>
+<rect x="344" y="529" width="212" height="5" fill="#1f4e79"/>
+<text x="450.0" y="525" text-anchor="middle" class="ename">Product</text>
+<text x="352" y="549" class="attr" text-decoration="underline" font-weight="700">productId</text>
+<text x="506" y="549" class="type" text-anchor="end">TEXT</text>
+<text x="548" y="549" class="key" text-anchor="end">PK</text>
+<line x1="344" y1="556" x2="556" y2="556" stroke="#ddd"/>
+<text x="352" y="571" class="attr">productName</text>
+<text x="506" y="571" class="type" text-anchor="end">TEXT</text>
+<line x1="344" y1="578" x2="556" y2="578" stroke="#ddd"/>
+<text x="352" y="593" class="attr">category</text>
+<text x="506" y="593" class="type" text-anchor="end">TEXT</text>
+<line x1="344" y1="600" x2="556" y2="600" stroke="#ddd"/>
+<text x="352" y="615" class="attr">basePrice</text>
+<text x="506" y="615" class="type" text-anchor="end">REAL</text>
+<line x1="344" y1="622" x2="556" y2="622" stroke="#ddd"/>
+<text x="352" y="637" class="attr">status</text>
+<text x="506" y="637" class="type" text-anchor="end">TEXT</text>
+</g><g class="entity">
+<rect x="668" y="528" width="212" height="94" rx="4" fill="#fff" stroke="#333" stroke-width="1.4"/>
+<rect x="668" y="528" width="212" height="28" rx="4" fill="#2e6b34"/>
+<rect x="668" y="551" width="212" height="5" fill="#2e6b34"/>
+<text x="774.0" y="547" text-anchor="middle" class="ename">Recipe</text>
+<text x="676" y="571" class="attr" text-decoration="underline" font-weight="700">productId</text>
+<text x="830" y="571" class="type" text-anchor="end">TEXT</text>
+<text x="872" y="571" class="key" text-anchor="end">PK,FK</text>
+<line x1="668" y1="578" x2="880" y2="578" stroke="#ddd"/>
+<text x="676" y="593" class="attr" text-decoration="underline" font-weight="700">ingredientId</text>
+<text x="830" y="593" class="type" text-anchor="end">TEXT</text>
+<text x="872" y="593" class="key" text-anchor="end">PK,FK</text>
+<line x1="668" y1="600" x2="880" y2="600" stroke="#ddd"/>
+<text x="676" y="615" class="attr">amountRequired</text>
+<text x="830" y="615" class="type" text-anchor="end">REAL</text>
+</g>
+<rect x="20" y="470" width="296" height="178" rx="4" fill="#fafafa" stroke="#bbb"/><text x="30" y="490" class="lhead">Legend (crow's-foot, min..max)</text><line x1="34" y1="512" x2="84" y2="512" stroke="#222" stroke-width="1.4"/><line x1="75" y1="504" x2="75" y2="520" stroke="#222" stroke-width="1.6"/>
+<line x1="68" y1="504" x2="68" y2="520" stroke="#222" stroke-width="1.6"/><text x="96" y="516" class="ltext">exactly one (1..1)</text><line x1="34" y1="536" x2="84" y2="536" stroke="#222" stroke-width="1.4"/><line x1="68" y1="536" x2="84" y2="545" stroke="#222" stroke-width="1.6"/>
+<line x1="68" y1="536" x2="84" y2="536" stroke="#222" stroke-width="1.6"/>
+<line x1="68" y1="536" x2="84" y2="527" stroke="#222" stroke-width="1.6"/>
+<circle cx="60" cy="536" r="5" fill="#fff" stroke="#222" stroke-width="1.5"/><text x="96" y="540" class="ltext">zero or many (0..N)</text><line x1="34" y1="560" x2="84" y2="560" stroke="#222" stroke-width="1.4"/><line x1="68" y1="560" x2="84" y2="569" stroke="#222" stroke-width="1.6"/>
+<line x1="68" y1="560" x2="84" y2="560" stroke="#222" stroke-width="1.6"/>
+<line x1="68" y1="560" x2="84" y2="551" stroke="#222" stroke-width="1.6"/>
+<line x1="62" y1="552" x2="62" y2="568" stroke="#222" stroke-width="1.6"/><text x="96" y="564" class="ltext">one or many (1..N)</text><text x="32" y="584" class="lnote">PK = primary key (underlined), FK = foreign key</text><text x="32" y="595" class="lnote">Double border = weak entity (OrderItem)</text><text x="32" y="606" class="lnote">Green = associative entity (Recipe) resolving</text><text x="32" y="617" class="lnote">     Product M:N Ingredient</text><text x="32" y="628" class="lnote">FKs: ON DELETE RESTRICT, except</text><text x="32" y="639" class="lnote">     OrderItem.orderId: ON DELETE CASCADE</text>
+</svg></div>
+
+<h2>Design commentary</h2>
+
+<h3>1. Why is OrderItem separate from SalesOrder?</h3>
+<p>A SalesOrder is one transaction: one member, one store, one date and time. That transaction can
+contain several different drinks, each with its own product, size, quantity and price. Keeping drinks
+inside SalesOrder would need repeating columns (drink1, drink2, &hellip;) or would repeat the member,
+store, date and time on every drink row, causing redundancy and update anomalies. Splitting them gives
+a 1&nbsp;:&nbsp;N relationship &ndash; one SalesOrder row, one or more OrderItem rows &ndash; and lets
+deleting an order cascade cleanly to its lines.</p>
+
+<h3>2. Why is the key of OrderItem naturally composite?</h3>
+<p><code>lineNo</code> only numbers the lines <em>within</em> one order, so line 1 exists in order 1057
+and in order 1058. Neither <code>orderId</code> (many lines per order) nor <code>lineNo</code> (repeats
+across orders) is unique on its own, but the pair <code>(orderId, lineNo)</code> is. OrderItem is a weak
+entity: its identity depends on its owning SalesOrder, so the parent&rsquo;s key forms part of its key.</p>
+
+<h3>3. Why is Recipe required instead of storing ingredients in Product?</h3>
+<p>Product&ndash;Ingredient is many-to-many: one drink uses many ingredients and one ingredient (e.g.
+Fresh Milk) is used by many drinks. A list such as &ldquo;Black Tea, Milk, Pearls&rdquo; inside Product
+breaks first normal form, cannot be checked by a foreign key and has nowhere to store how much of each
+ingredient is needed. Recipe is the associative entity that resolves the M:N into two 1:N relationships:
+one row per <code>(productId, ingredientId)</code> holding <code>amountRequired</code>, a fact that
+belongs to the pair rather than to either entity. Its composite key stops an ingredient being listed
+twice for the same product.</p>
+
+<h3>4. Why store the historical unitPrice in OrderItem?</h3>
+<p><code>basePrice + sizeSurcharge</code> only gives <em>today&rsquo;s</em> price. If prices were
+recalculated after a menu change, yesterday&rsquo;s sales would silently change value, so revenue
+reports would no longer match what customers actually paid. <code>unitPrice</code> is a snapshot of a
+fact that was true at the moment of sale &ndash; deliberate, controlled redundancy rather than an
+anomaly &ndash; and it lets authorised imported sales keep their original price. <code>lineTotal</code>
+likewise records the amount actually charged after any Bubble Rewards free drink.</p>
+
+</body>
+</html>
