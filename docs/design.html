@@ -259,38 +259,5 @@
 <line x1="62" y1="552" x2="62" y2="568" stroke="#222" stroke-width="1.6"/><text x="96" y="564" class="ltext">one or many (1..N)</text><text x="32" y="584" class="lnote">PK = primary key (underlined), FK = foreign key</text><text x="32" y="595" class="lnote">Double border = weak entity (OrderItem)</text><text x="32" y="606" class="lnote">Green = associative entity (Recipe) resolving</text><text x="32" y="617" class="lnote">     Product M:N Ingredient</text><text x="32" y="628" class="lnote">FKs: ON DELETE RESTRICT, except</text><text x="32" y="639" class="lnote">     OrderItem.orderId: ON DELETE CASCADE</text>
 </svg></div>
 
-<h2>Design commentary</h2>
-
-<h3>1. Why is OrderItem separate from SalesOrder?</h3>
-<p>A SalesOrder is one transaction: one member, one store, one date and time. That transaction can
-contain several different drinks, each with its own product, size, quantity and price. Keeping drinks
-inside SalesOrder would need repeating columns (drink1, drink2, &hellip;) or would repeat the member,
-store, date and time on every drink row, causing redundancy and update anomalies. Splitting them gives
-a 1&nbsp;:&nbsp;N relationship &ndash; one SalesOrder row, one or more OrderItem rows &ndash; and lets
-deleting an order cascade cleanly to its lines.</p>
-
-<h3>2. Why is the key of OrderItem naturally composite?</h3>
-<p><code>lineNo</code> only numbers the lines <em>within</em> one order, so line 1 exists in order 1057
-and in order 1058. Neither <code>orderId</code> (many lines per order) nor <code>lineNo</code> (repeats
-across orders) is unique on its own, but the pair <code>(orderId, lineNo)</code> is. OrderItem is a weak
-entity: its identity depends on its owning SalesOrder, so the parent&rsquo;s key forms part of its key.</p>
-
-<h3>3. Why is Recipe required instead of storing ingredients in Product?</h3>
-<p>Product&ndash;Ingredient is many-to-many: one drink uses many ingredients and one ingredient (e.g.
-Fresh Milk) is used by many drinks. A list such as &ldquo;Black Tea, Milk, Pearls&rdquo; inside Product
-breaks first normal form, cannot be checked by a foreign key and has nowhere to store how much of each
-ingredient is needed. Recipe is the associative entity that resolves the M:N into two 1:N relationships:
-one row per <code>(productId, ingredientId)</code> holding <code>amountRequired</code>, a fact that
-belongs to the pair rather than to either entity. Its composite key stops an ingredient being listed
-twice for the same product.</p>
-
-<h3>4. Why store the historical unitPrice in OrderItem?</h3>
-<p><code>basePrice + sizeSurcharge</code> only gives <em>today&rsquo;s</em> price. If prices were
-recalculated after a menu change, yesterday&rsquo;s sales would silently change value, so revenue
-reports would no longer match what customers actually paid. <code>unitPrice</code> is a snapshot of a
-fact that was true at the moment of sale &ndash; deliberate, controlled redundancy rather than an
-anomaly &ndash; and it lets authorised imported sales keep their original price. <code>lineTotal</code>
-likewise records the amount actually charged after any Bubble Rewards free drink.</p>
-
 </body>
 </html>

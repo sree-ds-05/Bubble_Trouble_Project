@@ -23,7 +23,7 @@
 .print ''
 .print '======================================================================'
 -- IMPORTANT: Replace 12345678 below with your Student Number
-.print ' Student ID: 12345678' 
+.print ' Student ID: 25252848, 24975886'
 .print ' CITS1402 - BUBBLE TROUBLE'
 .print ' MISSION 6: BUSINESS QUERIES'
 .print '======================================================================'
@@ -170,7 +170,6 @@ JOIN SalesOrder so ON so.memberId = m.memberId
 JOIN OrderItem oi  ON oi.orderId  = so.orderId
 GROUP BY m.memberId, m.memberName
 HAVING SUM(oi.lineTotal) > (
-    -- average spending of members who spent more than zero
     SELECT AVG(memberTotal)
     FROM (SELECT SUM(oi2.lineTotal) AS memberTotal
           FROM SalesOrder so2
@@ -197,7 +196,6 @@ ORDER BY totalSpent DESC, m.memberName;
 -- >>> STUDENT QUERY Q7: WRITE YOUR SINGLE SQLITE QUERY BELOW >>>
 -- Q7
 WITH StoreProductQty AS (
-    -- total drinks of each product sold at each store
     SELECT so.storeId, oi.productId, SUM(oi.quantity) AS totalQuantity
     FROM SalesOrder so
     JOIN OrderItem oi ON oi.orderId = so.orderId
@@ -237,8 +235,6 @@ FROM Product p
 JOIN OrderItem oi ON oi.productId = p.productId
 GROUP BY p.productId, p.productName, p.category
 HAVING SUM(oi.quantity) > (
-    -- correlated: average total sold per product in THIS product's category
-    -- (a product never sold counts as 0)
     SELECT AVG(catProduct.productTotal)
     FROM (SELECT COALESCE(SUM(oi2.quantity), 0) AS productTotal
           FROM Product p2

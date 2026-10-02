@@ -1,26 +1,3 @@
--- ============================================================================
--- CITS1402 Project: Bubble Trouble
--- testData.sql  -  OUR OWN small, hand-checkable test data.
--- NOT part of the submission ZIP. Used for testing and for the demonstration.
---
--- Run order (from a fresh database):
---   sqlite3 BubbleTrouble.db ".read createTables.sql" ".read createTriggers.sql" \
---                            ".read createViews.sql"  ".read testData.sql"
---   sqlite3 BubbleTrouble.db < queries.sql
---
--- Built-in edge cases:
---   * Store S03 has no orders          (Q3 must still show it)
---   * Member 4 (Dana) has no orders    (MemberSummary must still show her)
---   * Ingredient I10 is in no recipe   (Q2 must still show it with 0)
---   * Product P07 is ACTIVE but never ordered (Q5)
---   * Product P08 is DISCONTINUED but has old sales
---   * Alice's 10th drink is a quantity-1 line          -> lineTotal 0
---   * Bob's 10th drink is inside a quantity-3 line     -> only 2 charged
---   * P02 sells exactly 20 drinks      (Q4 "at least 20" boundary)
---   * Store S01: P01 and P02 tie on 16 (Q7 must keep both)
---   * P01 price changes before order 1009 (old lines keep the old price)
--- ============================================================================
-
 PRAGMA foreign_keys = ON;
 
 INSERT INTO Store VALUES
@@ -75,11 +52,7 @@ INSERT INTO Recipe VALUES
     ('P07', 'I11', 6),   ('P07', 'I12', 40),
     ('P08', 'I01', 5),   ('P08', 'I13', 40);
 
--- Orders are inserted in date order; lines in increasing lineNo.
--- unitPrice and lineTotal are left NULL so the triggers fill them in,
--- except order 1000, an imported historical sale with its own unitPrice.
-
--- Chen: imported old sale, historical price 4.00 kept (menu price is now 4.50)
+-- Chen: imported sale, supplied price 4.00 kept
 INSERT INTO SalesOrder VALUES (1000, 3, 'S02', '2026-06-20', '12:00');
 INSERT INTO OrderItem  VALUES (1000, 1, 'P08', 'S', 2, 4.00, NULL);   -- 8.00
 
@@ -96,7 +69,7 @@ INSERT INTO OrderItem  VALUES (1002, 1, 'P02', 'M', 8, NULL, NULL);   -- 8 x 7.0
 INSERT INTO SalesOrder VALUES (1003, 1, 'S02', '2026-07-05', '14:30');
 INSERT INTO OrderItem  VALUES (1003, 1, 'P06', 'S', 4, NULL, NULL);   -- 4 x 6.50 = 26.00
 
--- Alice: drink 10 -> FREE (loyalty boundary, quantity 1)
+-- Alice: drink 10 (free)
 INSERT INTO SalesOrder VALUES (1004, 1, 'S01', '2026-07-10', '10:00');
 INSERT INTO OrderItem  VALUES (1004, 1, 'P01', 'M', 1, NULL, NULL);   -- 0 x 6.50 = 0.00
 
@@ -109,22 +82,21 @@ INSERT INTO OrderItem  VALUES (1005, 2, 'P03', 'S', 2, NULL, NULL);   -- 2 x 6.0
 INSERT INTO SalesOrder VALUES (1006, 1, 'S01', '2026-08-02', '11:45');
 INSERT INTO OrderItem  VALUES (1006, 1, 'P02', 'L', 3, NULL, NULL);   -- 3 x 7.50 = 22.50
 
--- Eli: drinks 9-19 (drink 10 is inside the first line)
+-- Eli: drinks 9-19 (drink 10 free)
 INSERT INTO SalesOrder VALUES (1007, 5, 'S02', '2026-08-09', '15:40');
 INSERT INTO OrderItem  VALUES (1007, 1, 'P01', 'L', 5, NULL, NULL);   -- 4 x 7.00 = 28.00
 INSERT INTO OrderItem  VALUES (1007, 2, 'P02', 'S', 4, NULL, NULL);   -- 4 x 6.50 = 26.00
 INSERT INTO OrderItem  VALUES (1007, 3, 'P06', 'M', 2, NULL, NULL);   -- 2 x 7.00 = 14.00
 
--- Bob: drinks 9-13 (drink 10 is inside a quantity-3 line -> multi-quantity reward)
+-- Bob: drinks 9-13 (drink 10 free)
 INSERT INTO SalesOrder VALUES (1008, 2, 'S02', '2026-08-15', '13:05');
 INSERT INTO OrderItem  VALUES (1008, 1, 'P04', 'L', 3, NULL, NULL);   -- 2 x 6.50 = 13.00
 INSERT INTO OrderItem  VALUES (1008, 2, 'P05', 'S', 2, NULL, NULL);   -- 2 x 5.50 = 11.00
 
--- Menu price change: Pearl Milk Tea goes from 6.00 to 6.50.
--- Earlier P01 lines must keep their old unitPrice.
+-- Price change: P01 6.00 -> 6.50
 UPDATE Product SET basePrice = 6.50 WHERE productId = 'P01';
 
--- Eli: drinks 20-30 (drink 20 in line 1, drink 30 in line 2)
+-- Eli: drinks 20-30 (drinks 20 and 30 free)
 INSERT INTO SalesOrder VALUES (1009, 5, 'S01', '2026-09-12', '17:25');
 INSERT INTO OrderItem  VALUES (1009, 1, 'P01', 'S', 6, NULL, NULL);   -- 5 x 6.50 = 32.50
 INSERT INTO OrderItem  VALUES (1009, 2, 'P02', 'L', 5, NULL, NULL);   -- 4 x 7.50 = 30.00

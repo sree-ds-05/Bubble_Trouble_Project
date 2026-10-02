@@ -38,7 +38,7 @@ defend the project in the demonstration.
 | `queries.sql` | 6 | The 8 business queries (Q1–Q8) inside the provided skeleton | **Yes** |
 | `testEvidence.txt` | Detective | Our 5 required tests: prediction vs actual result | **Yes** |
 | `testData.sql` | — | Our small, hand-checkable sample data for testing and the demo | No |
-| `docs/design.html` | — | Editable source of `design.pdf` (open in a browser → Print → PDF) | No |
+| `docs/design.html` | — | Editable source of the ER diagram in `design.pdf` (diagram only; the commentary is in the PDF) | No |
 | `README.md` | — | This explanation | No |
 
 ---
@@ -437,8 +437,8 @@ CREATE TABLE OrderItem (
     productId TEXT NOT NULL,
     size      TEXT NOT NULL,
     quantity  INTEGER NOT NULL,
-    unitPrice REAL,              -- NULL allowed: Trigger A fills it in
-    lineTotal REAL,              -- NULL allowed: Trigger B fills it in
+    unitPrice REAL,
+    lineTotal REAL,
     CONSTRAINT BR3_validQuantity CHECK (typeof(quantity) = 'integer' AND quantity BETWEEN 1 AND 10),
     PRIMARY KEY (orderId, lineNo),
     FOREIGN KEY (orderId) REFERENCES SalesOrder(orderId)
@@ -1084,9 +1084,9 @@ Be ready to explain these. Each one is a one-line change if the marker prefers t
 
 ## 13. Before submitting — checklist
 
-- [ ] In `queries.sql`, replace `12345678` in `.print ' Student ID: 12345678'` with the submitting
-      student's number.
-- [ ] Create the ZIP named `<StudentID>_<Surname>.zip` containing **exactly** these 6 files:
+- [x] Student IDs are in `queries.sql`: `.print ' Student ID: 25252848, 24975886'`.
+- [ ] Create the ZIP named `<StudentID>_<Surname>.zip` (e.g. `25252848_<Surname>.zip`) containing
+      **exactly** these 6 files:
       `design.pdf`, `createTables.sql`, `createTriggers.sql`, `createViews.sql`, `queries.sql`,
       `testEvidence.txt` (**not** `testData.sql`, `README.md` or `docs/`).
 - [ ] Re-run from a clean database (Section 2) and read the output of `queries.sql` once more.

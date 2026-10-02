@@ -1,13 +1,6 @@
--- ============================================================================
--- CITS1402 Project: Bubble Trouble
--- createViews.sql
---   Mission 5: View A (MonthlySales) and View B (MemberSummary)
--- ============================================================================
-
 DROP VIEW IF EXISTS MonthlySales;
 DROP VIEW IF EXISTS MemberSummary;
 
--- VIEW A: one row per month + store + product, priced lines only.
 CREATE VIEW MonthlySales AS
 SELECT
     strftime('%Y-%m', so.orderDate) AS orderMonth,
@@ -22,7 +15,6 @@ JOIN Product p     ON p.productId  = oi.productId
 WHERE oi.lineTotal IS NOT NULL
 GROUP BY orderMonth, st.storeId, st.storeName, p.productId, p.productName;
 
--- VIEW B: one row per member, including members who have never ordered.
 CREATE VIEW MemberSummary AS
 SELECT
     m.memberId                      AS memberId,
